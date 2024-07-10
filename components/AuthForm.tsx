@@ -23,6 +23,7 @@ import CustomInput from './CustomInput'
 import { authFormSchema } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { signIn, signUp } from '@/lib/actions/user.action'
+import PlaidLink from './PlaidLink'
 
 
 
@@ -51,7 +52,19 @@ const AuthForm = ({type}: {type: string}) => {
         try{
             // Sign up with Appwrite & create plaid token
             if (type==='sign-up'){
-                const newUser = await signUp(data)
+                const userData = {
+                    firstName: data.firstName!,
+                    lastName: data.lastName!,
+                    address1: data.address1!,
+                    city: data.city!,
+                    postalCode: data.postalCode!,
+                    dob: data.dob!,
+                    ssn: data.ssn!,
+                    email: data.email,
+                    password: data.password
+                }
+
+                const newUser = await signUp(userData)
                 setUser(newUser)
             }
 
@@ -95,7 +108,9 @@ const AuthForm = ({type}: {type: string}) => {
             </div>
         </header>
         {user ? (
-            <div className='flex flex-col gap-4'></div>
+            <div className='flex flex-col gap-4'>
+                <PlaidLink user={user} variant="primary"/>
+            </div>
         ) : (
             <>
                 <Form {...form}>
@@ -125,14 +140,14 @@ const AuthForm = ({type}: {type: string}) => {
                         <Button type="submit" className='form-btn' disabled={isLoading}>
                             {isLoading ? (
                                 <>
-                                    <Loader2 className='animated-spin'/> &nbsp;Loading...
+                                    <Loader2 className='animate-spin'/> &nbsp;Loading...
                                 </>
                             ): type === 'sign-in' ? "Sign In" : "Sign Up"}
                         </Button>
                     </div>
                 </form>
                 </Form>
-
+                
                 <footer className='flex justify-center gap-1'>
                     <p className='text-14 font-normal text-gray-600'>
                         {type=== 'sign-in' ? "Don't have an account?" : "Already have an account?"}
