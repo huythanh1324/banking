@@ -1,7 +1,7 @@
 import MobileNav from "@/components/MobileNav";
 import RightSideBar from "@/components/RightSideBar";
 import SideBar from "@/components/SideBar";
-import { getLoggedInUser } from "@/lib/actions/user.action";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
@@ -28,7 +28,6 @@ export default async function RootLayout({
             {children}
           </div>
 
-          <RightSideBar user={loggedIn} transactions={[]} banks={[{currentBalance:123.51},{currentBalance:205.13}]}/>
       </main>
     );
   }

@@ -131,7 +131,8 @@ declare type NewDwollaCustomerParams = {
   address1: string;
   city: string;
   postalCode: string;
-  dob: string;
+  dateOfBirth: string;
+  state: string;
   ssn: string;
 };
 
