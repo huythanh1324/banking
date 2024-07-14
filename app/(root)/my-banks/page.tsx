@@ -6,7 +6,7 @@ import React from 'react'
 
 const MyBank = async() => {
   const loggedIn = await getLoggedInUser()
-  const accounts = await getAccounts({userId:loggedIn.$id})
+  const accounts = await getAccounts({userId:loggedIn?.$id})
 
   return (
     <section className='my-banks'>

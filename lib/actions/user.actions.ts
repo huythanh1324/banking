@@ -263,7 +263,6 @@ export const getBank = async({documentId}: getBankProps) =>{
             BANK_COLLECTION_ID!,
             [Query.equal('$id',[documentId])]
         )
-
         return parseStringify(bank.documents[0])
     } catch (err){
         console.log("Error when getting a bank account",err)
@@ -277,9 +276,9 @@ export const getBankByAccountId = async({accountId}: getBankByAccountIdProps) =>
         const bank = await database.listDocuments(
             DATABASE_ID!,
             BANK_COLLECTION_ID!,
-            [Query.equal('$id',[accountId])]
+            [Query.equal('accountId',[accountId])]
         )
-
+        console.log(bank)
         if (bank.total !== 1 ) return null
 
         return parseStringify(bank.documents[0])

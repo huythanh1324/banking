@@ -14,6 +14,7 @@ const {
 export const createTransaction = async( transaction: CreateTransactionProps) =>{
     try{
         const {database} = await createAdminClient()
+        console.log('start create document')
 
         const newTransaction = await database.createDocument(
             DATABASE_ID!,
@@ -25,7 +26,7 @@ export const createTransaction = async( transaction: CreateTransactionProps) =>{
                 ...transaction
             }
         )
-
+        console.log(newTransaction)
         return parseStringify(newTransaction)
     }catch(err){
         console.log(err)

@@ -19,11 +19,11 @@ import {
 import { Input } from "@/components/ui/input"
 import { Divide, Loader2 } from 'lucide-react'
 import { time } from 'console'
-import CustomInput from './CustomInput'
+import CustomInput from '../CustomInput'
 import { authFormSchema } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import { signIn, signUp } from '@/lib/actions/user.actions'
-import PlaidLink from './PlaidLink'
+import PlaidLink from '../PlaidLink'
 
 
 
@@ -80,7 +80,6 @@ const AuthForm = ({type}: {type: string}) => {
         }catch(err){
 
         } finally {  
-            console.log(data)
             setIsLoading(false)
         }
     }
@@ -133,8 +132,8 @@ const AuthForm = ({type}: {type: string}) => {
                         </div>
                         </>
                     ):(<></>)}
-                    <CustomInput control={form.control} name="email" label='Email' placeholder='Enter your email' type="text"/>
-                    <CustomInput control={form.control} name="password" label='Password' placeholder='Enter your password' type='password'/>
+                    <CustomInput control={form.control} name="email" label='Email (Test: guest@example.com)' placeholder='Enter your email' type="text"/>
+                    <CustomInput control={form.control} name="password" label='Password (Test: 123456789)' placeholder='Enter your password' type='password'/>
                     
                     <div className='flex flex-col gap-4'>
                         <Button type="submit" className='form-btn' disabled={isLoading}>

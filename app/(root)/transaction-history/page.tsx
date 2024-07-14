@@ -1,6 +1,6 @@
 import HeaderBox from '@/components/HeaderBox'
 import { Pagination } from '@/components/Pagination'
-import TransactionsTable from '@/components/TransactionsTable'
+import TransactionsTable from '@/components/transaction-history/TransactionsTable'
 import { getAccount, getAccounts } from '@/lib/actions/bank.action'
 import { getLoggedInUser } from '@/lib/actions/user.actions'
 import { formatAmount } from '@/lib/utils'
